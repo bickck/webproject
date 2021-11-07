@@ -20,33 +20,33 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand/logo -->
-  <a class="navbar-brand" href="/coloso">myColoso</a>
+  <a class="navbar-brand" href="/">myColoso</a>
   
   <!-- Links -->
   <ul class="navbar-nav mr-auto">
     <li class="nav-item">
-      <a class="nav-link" href="#">ABOUT</a>
+      <a class="nav-link" href="/about">ABOUT</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">이벤트</a>
+      <a class="nav-link" href="/event">이벤트</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">카테고리</a>
+      <a class="nav-link" href="/category">카테고리</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">학습로드맵</a>
+      <a class="nav-link" href="/myroadMap">학습로드맵</a>
     </li>
     <!-- 로그인 할 경우 보여지는 곳 -->
     <li class="nav-item">
-      <a class="nav-link" href="#">나의 강의장</a>
+      <a class="nav-link" href="/userList">나의 강의장</a>
     </li>
   
     <li class="nav-item">
-      <a class="nav-link" href="#">로그인</a>
+      <a class="nav-link" href="/login">로그인</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-link" href="#">회원가입</a>
+      <a class="nav-link" href="/register">회원가입</a>
     </li>
   </ul>
 </nav>
