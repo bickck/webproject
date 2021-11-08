@@ -15,7 +15,7 @@ $(document).ready(function() {
 			type: "POST",
 			url: "/user/register",
 			data: JSON.stringify(data),
-			contentType: "application/json; charset=utf-8",
+			contentType: "application/json; charset=utf-8"
 		}).done(function(resp) {
 			alert("회원가입이 완료되었습니다.");
 			//alert(resp);
@@ -23,9 +23,5 @@ $(document).ready(function() {
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});
-	});
-	
-	$('#btn-checkpwd').on("click",()=>{
-		
 	});
 });

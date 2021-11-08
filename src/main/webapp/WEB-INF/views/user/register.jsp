@@ -13,7 +13,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script src="/js/user/checkpwd.js"></script>
 <script src="/js/user/user.js"></script>
 </head>
 
@@ -38,19 +38,27 @@
 					<input type="tel" class="form-control" id="phonenumber"
 						placeholder="휴대전화">
 				</div>
+
 				<div class="form-group">
 					<div class="container" id="passWordEmpty"></div>
 					<input type="password" class="form-control" id="password"
 						placeholder="비밀번호">
+					<div class="container" id="passWordEmpty"></div>
 				</div>
+
 				<div class="form-group" id="userempty">
-					<div class="container-empty" id="rePasswordEmpty"></div>
+					<div class="container" id="pass"></div>
 					<input type="repassword" placeholder="비밀번호 확인" class="form-control"
-						id="pwd">
+						id="rePwd">
+
+					<div class="container-empty" id="rePasswordEmpty"></div>
 				</div>
 			</form>
+
 			<button id="btn-save" type="button" class="btn btn-primary btn-block">회원
 				가입</button>
+			<button id="btn-chk" type="button" class="btn btn-primary btn-block">
+				비밀번호 체크</button>
 		</div>
 
 	</div>

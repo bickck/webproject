@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.pro.coloso.domain.User;
+import com.pro.coloso.repository.RemoveBackUpRepository;
 import com.pro.coloso.repository.UserRepository;
 import com.pro.coloso.service.UserService;
 
@@ -22,17 +23,24 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private RemoveBackUpRepository backUpRepository;
+	
 	@Transactional
 	public User save(User user) {
 		return userRepository.save(user);
 	}
 
+	@Transactional
 	@Override
 	public void delete(User user) {
 		// TODO Auto-generated method stub
+		backUpRepository.save(user);
+		userRepository.delete(user);
 		
 	}
 
+	@Transactional
 	@Override
 	public void update(User user) {
 		// TODO Auto-generated method stub
