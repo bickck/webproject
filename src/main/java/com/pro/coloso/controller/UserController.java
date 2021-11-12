@@ -1,7 +1,5 @@
 package com.pro.coloso.controller;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,5 +30,11 @@ public class UserController {
 		return null;
 	}
 	
-
+	@PostMapping(value ="/account/findPwd")
+	public User findPassWd(@RequestBody User user) {
+		return null;
+	}
 }
+/*
+ * 유저 컨트롤러는 회원가입 또는 계정 찾기등 회원에 관련된 모든 일을 처리한다.
+ */

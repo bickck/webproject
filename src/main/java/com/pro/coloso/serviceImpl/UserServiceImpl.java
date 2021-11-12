@@ -42,10 +42,13 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	@Override
-	public void update(User user) {
+	public User update(User user) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
+	public User findByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
 	
 }
