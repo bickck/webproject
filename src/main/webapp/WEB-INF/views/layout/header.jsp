@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,35 +22,33 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <!-- Brand/logo -->
-  <a class="navbar-brand" href="/">myColoso</a>
-  
-  <!-- Links -->
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="/about">ABOUT</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/event">이벤트</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/category">카테고리</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/myroadMap">학습로드맵</a>
-    </li>
-    <!-- 로그인 할 경우 보여지는 곳 -->
-    <li class="nav-item">
-      <a class="nav-link" href="/userList">나의 강의장</a>
-    </li>
-  
-    <li class="nav-item">
-      <a class="nav-link" href="/account/login">로그인</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-link" href="account/register">회원가입</a>
-    </li>
-  </ul>
-</nav>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<!-- Brand/logo -->
+		<a class="navbar-brand" href="/">myColoso</a>
+
+		<!-- Links -->
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item"><a class="nav-link" href="/event/about">ABOUT</a>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="/event">이벤트</a></li>
+			<li class="nav-item"><a class="nav-link" href="/event/category">카테고리</a>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="/event/myroadMap">학습로드맵</a>
+			</li>
+			<!-- 로그인 할 경우 보여지는 곳 -->
+			
+			<sec:authorize access="!isAuthenticated()">
+				<li class="nav-item"><a class="nav-link" href="/account/login">로그인</a>
+				</li>
+
+				<li class="nav-item"><a class="nav-link"
+					href="account/register">회원가입</a></li>
+			</sec:authorize>
+			<sec:authorize access="isAuthenticated()">
+				<li class="nav-item"><a class="nav-link" href="/userList">나의
+						강의장</a></li>
+				<li class="nav-item"><a class="nav-link" href="/account/logout">로그아웃</a>
+			</sec:authorize>
+			
+		</ul>
+	</nav>

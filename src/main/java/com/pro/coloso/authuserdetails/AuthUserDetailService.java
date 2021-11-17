@@ -1,4 +1,6 @@
-package com.pro.coloso.config;
+package com.pro.coloso.authuserdetails;
+
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,17 +12,18 @@ import com.pro.coloso.domain.User;
 import com.pro.coloso.repository.UserRepository;
 
 @Service
-public class PrincipalDetailService implements UserDetailsService{
+public class AuthUserDetailService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
-		User principal = userRepository.findByUsername(username);
-		return new PrincipalDetail(principal);
+		User principal = userRepository.findByEmail(email).orElseThrow(() -> {
+			return new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다.");
+		});
+		
+		return new AuthUserDetails(principal);
 	}
-
-	
 }

@@ -1,22 +1,21 @@
-package com.pro.coloso.config;
+package com.pro.coloso.authuserdetails;
 
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.pro.coloso.domain.User;
 
-public class PrincipalDetail implements UserDetails {
-	
+public class AuthUserDetails implements UserDetails {
+
 	private User user;
-
-	public PrincipalDetail(User principal) {
-		// TODO Auto-generated constructor stub
-		this.user = principal;
+	
+	
+	public AuthUserDetails(User user) {
+		this.user = user;
 	}
-
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
@@ -26,19 +25,19 @@ public class PrincipalDetail implements UserDetails {
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return getPassword();
+		return user.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return user.getUsername();
+		return user.getEmail();
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
@@ -50,7 +49,7 @@ public class PrincipalDetail implements UserDetails {
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -59,5 +58,4 @@ public class PrincipalDetail implements UserDetails {
 		return false;
 	}
 
-	
 }
