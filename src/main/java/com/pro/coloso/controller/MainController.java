@@ -11,24 +11,24 @@ public class MainController {
 		System.out.println("out");
 		return "home";
 	}
-	
-	@GetMapping("/account/login")
+
+	@GetMapping("/user/login")
 	public String loginPage() {
 		System.out.println("loginpage");
 		return "user/loginForm";
 	}
-	
+
 	@GetMapping("/account/register")
 	public String registerPage() {
 		System.out.println("register");
 		return "user/register";
 	}
-	
+
 	@GetMapping("/account/findme")
 	public String findPwd() {
 		return "findPwd";
 	}
-	
+
 }
 
 /*

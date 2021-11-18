@@ -12,9 +12,19 @@ $(document).ready(function() {
 
 		$.ajax({
 			type: "POST",
-			url: "/request/login",
+			url: "/auth/login",
 			data: JSON.stringify(data),
-			contentType: "application/json; charset=utf-8"
+			contentType: "application/json; charset=utf-8",
+			beforSend : function(xhr){
+				xhr.setRequestHeader("${_csrf.headerName}","${_csrf.token}")
+			},
+			success : function(result){
+				alert("성공")
+				location.href="/";
+			},
+			fail : function(result){
+				alert("실패")
+			}
 		});
 	});
 });

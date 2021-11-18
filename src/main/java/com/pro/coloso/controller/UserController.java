@@ -31,7 +31,7 @@ public class UserController {
 		return null;
 	}
 	
-	@PostMapping(value ="/account/findPwd")
+	@PostMapping(value ="/user/findPwd")
 	public User findPassWd(@RequestBody User user) {
 		return null;
 	}

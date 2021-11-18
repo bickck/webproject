@@ -38,7 +38,7 @@
 			<!-- 로그인 할 경우 보여지는 곳 -->
 			
 			<sec:authorize access="!isAuthenticated()">
-				<li class="nav-item"><a class="nav-link" href="/account/login">로그인</a>
+				<li class="nav-item"><a class="nav-link" href="/user/login">로그인</a>
 				</li>
 
 				<li class="nav-item"><a class="nav-link"
@@ -47,7 +47,7 @@
 			<sec:authorize access="isAuthenticated()">
 				<li class="nav-item"><a class="nav-link" href="/userList">나의
 						강의장</a></li>
-				<li class="nav-item"><a class="nav-link" href="/account/logout">로그아웃</a>
+				<li class="nav-item"><a class="nav-link" href="/auth/logout">로그아웃</a>
 			</sec:authorize>
 			
 		</ul>

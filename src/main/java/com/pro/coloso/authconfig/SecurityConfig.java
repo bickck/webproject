@@ -12,8 +12,11 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.pro.coloso.authfilter.AuthFailureHandlerImpl;
+import com.pro.coloso.authfilter.AuthSuccessHandlerImpl;
 import com.pro.coloso.authuserdetails.AuthUserDetailService;
 
 @Configuration
@@ -41,29 +44,62 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
-		http.csrf()
-				.disable()
-				.authorizeRequests().
-				antMatchers("/","/event/**", "/user/**", "/account/**","/test")
+		http
+		.authorizeRequests()
+			.antMatchers("/","/event/**", "/user/**", "/account/**","/test")
+			.anonymous()
+			.anyRequest().authenticated()
+		.and()
+			.csrf()
+			.ignoringAntMatchers("/user/login")
+			.ignoringAntMatchers("/auth/logining")
+		.and()
+			.formLogin()
+			.loginPage("/user/login")
+			.loginProcessingUrl("auth/logining")
+			.defaultSuccessUrl("/",true)
+			.successHandler(authSuccessHandlerImpl())
+			.failureHandler(authFailureHandlerImpl())
+		.and()
+			.logout()
+			.logoutUrl("/logout")
+			.deleteCookies("JSESSIONID")
+			.logoutSuccessUrl("/");
+		
+		/*
+		.csrf().disable()
+				.authorizeRequests()
+				.antMatchers("/","/event/**", "/user/**", "/account/**","/test")
 				.permitAll()
 				.anyRequest()
 				.authenticated()
 			.and()
 				.formLogin()
 				.loginPage("/account/login")
-				.loginProcessingUrl("/request/login")
+				.loginProcessingUrl("/user/login")
 				.defaultSuccessUrl("/")
-				.failureForwardUrl("/account/login");
+				.failureForwardUrl("/account/login");*/
 	}
 	
 	@Bean
 	public UserAuthenticationProvider authenticationProvider() {
 		return new UserAuthenticationProvider(bCryptPasswordEncoder());
 	}
+	@Bean
+	public AuthSuccessHandlerImpl authSuccessHandlerImpl() {
+		// TODO Auto-generated constructor stub
+		return new AuthSuccessHandlerImpl();
+	}
 	
+	@Bean
+	public AuthFailureHandlerImpl authFailureHandlerImpl() {
+		return new AuthFailureHandlerImpl();
+	}
 	@Override
 	protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
 		// TODO Auto-generated method stub
 		authenticationManagerBuilder.authenticationProvider(authenticationProvider());
 	}
+	
+	// 리다이렉션 존나 뜨네 시바꺼;;
 }
