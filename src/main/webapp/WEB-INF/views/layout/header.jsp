@@ -36,19 +36,25 @@
 			<li class="nav-item"><a class="nav-link" href="/event/myroadMap">학습로드맵</a>
 			</li>
 			<!-- 로그인 할 경우 보여지는 곳 -->
-			
-			<sec:authorize access="!isAuthenticated()">
-				<li class="nav-item"><a class="nav-link" href="/user/login">로그인</a>
-				</li>
 
-				<li class="nav-item"><a class="nav-link"
-					href="account/register">회원가입</a></li>
-			</sec:authorize>
-			<sec:authorize access="isAuthenticated()">
-				<li class="nav-item"><a class="nav-link" href="/userList">나의
-						강의장</a></li>
-				<li class="nav-item"><a class="nav-link" href="/auth/logout">로그아웃</a>
-			</sec:authorize>
-			
+			<c:choose>
+				<c:when test="${empty sessionScope.principal }">
+					<li class="nav-item"><a class="nav-link" href="/user/login">로그인</a>
+					</li>
+
+					<li class="nav-item"><a class="nav-link"
+						href="account/register">회원가입</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="nav-item"><a class="nav-link" href="/userList">나의
+							강의장</a></li>
+					<li class="nav-item"><a class="nav-link" href="/auth/logout">로그아웃</a>
+				</c:otherwise>
+
+			</c:choose>
+
 		</ul>
 	</nav>
+	<h1>${id }</h1>
+	<h1>${username }</h1>
+	<h1>${email }</h1>

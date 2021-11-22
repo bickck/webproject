@@ -17,16 +17,16 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="/js/user/login.js"></script>
+
 </head>
 <body>
 	<div class="container">
 		<div class="container center">
 
-			<form>
+			<form action="/auth/login" method="POST">
 				<div class="form-group">
 					<div class="container-empty" id="emailEmpty"></div>
-					<input type="email" class="form-control" id="email"
+					<input type="text" class="form-control" id="email"
 						placeholder="이메일">
 				</div>
 
@@ -36,16 +36,17 @@
 						placeholder="비밀번호">
 					<div class="container" id="passWordEmpty"></div>
 				</div>
+
+				<div class="form-group from-check">
+					<label class="form-check-label"> <input name="remember"
+						class="form-check-input" type="checkbox"> Remember me
+					</label> <a href="/account/find-me">비밀번호 찾기</a>
+				</div>
+
+				<button id="btn-login" type="submit"
+					class="btn btn-primary btn-block">로그인</button>
+
 			</form>
-
-			<div class="form-group from-check">
-				<label class="form-check-label"> <input name="remember"
-					class="form-check-input" type="checkbox"> Remember me
-				</label> <a href="/account/find-me">비밀번호 찾기</a>
-			</div>
-
-			<button id="btn-login" type="button"
-				class="btn btn-primary btn-block">로그인</button>
 		</div>
 </body>
 </html>
