@@ -9,10 +9,12 @@ import com.pro.coloso.domain.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
+	//
 	User findByUsername(String username);
 
 	Optional<User> findByEmailAndPassword(String email, String password);
 
 	@Query(value = "SELETE * FROM user WHERE EMAIL = ?")
 	Optional<User> findByEmail(String email);
+	
 }

@@ -2,16 +2,16 @@ package com.pro.coloso.dto;
 
 import org.springframework.http.HttpStatus;
 
-public class ResponseDTO<T> {
+public class ResponseEntity<T> {
 	
 	HttpStatus httpStatus;
 	T value;
 	
-	public ResponseDTO(){
+	public ResponseEntity(){
 		
 	}
 	
-	public ResponseDTO(HttpStatus httpStatus, T value) {
+	public ResponseEntity(HttpStatus httpStatus, T value) {
 		super();
 		this.httpStatus = httpStatus;
 		this.value = value;

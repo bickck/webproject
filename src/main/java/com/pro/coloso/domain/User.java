@@ -1,13 +1,25 @@
 package com.pro.coloso.domain;
 
+import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.pro.coloso.enumtype.UserType;
 
@@ -19,6 +31,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "USER")
+@EntityListeners(AuditingEntityListener.class)
 public class User {
 
 	@Id
@@ -40,6 +53,18 @@ public class User {
 	@Column(name = "USER_TYPE")
 	@Enumerated(EnumType.STRING)
 	private UserType userType;
+
+	@Column(name = "CREATETIME")
+	@CreationTimestamp
+	private LocalDateTime createDateTime = LocalDateTime.now();
+
+	@Column(name = "UPDATETIME")
+	@UpdateTimestamp
+	private LocalDateTime updateDateTime = LocalDateTime.now();
+
+	// private PlayLists lists;
+
+	// private Coupon havingCoupon;
 
 	public User() {
 		// TODO Auto-generated constructor stub

@@ -30,7 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pro.coloso.domain.User;
 import com.pro.coloso.dto.RequestLoginDTO;
-import com.pro.coloso.dto.ResponseDTO;
+import com.pro.coloso.dto.ResponseEntity;
 import com.pro.coloso.dto.UserDTO;
 import com.pro.coloso.service.RequestAccountService;
 import com.pro.coloso.service.UserService;
@@ -45,19 +45,14 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping(value = "/register")
-	public User save(@RequestBody User user) {
+	public ResponseEntity<User> save(@RequestBody User user) {
 		logger.info("call user save useremail: "+ user.getEmail());
 		userService.save(user);
-		return user;
+		return new ResponseEntity<User>(HttpStatus.OK, user);
 	}
 
 	@PostMapping(value = "/update")
 	public User update(@RequestBody User user) {
-		return null;
-	}
-
-	@PostMapping(value = "/findPwd")
-	public User findPassword(@RequestBody User user) {
 		return null;
 	}
 
