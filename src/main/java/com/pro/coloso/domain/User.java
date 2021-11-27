@@ -2,7 +2,9 @@ package com.pro.coloso.domain;
 
 import java.text.DateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +14,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -62,9 +65,11 @@ public class User {
 	@UpdateTimestamp
 	private LocalDateTime updateDateTime = LocalDateTime.now();
 
-	// private PlayLists lists;
+	@OneToMany(mappedBy = "lecturename")
+	private List<Lecture> lecturenames = new ArrayList<Lecture>();
 
-	// private Coupon havingCoupon;
+	@OneToMany(mappedBy = "coupon_name")
+	private List<Coupon> havingCoupon = new ArrayList<Coupon>();
 
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -132,4 +137,37 @@ public class User {
 		this.userType = userType;
 	}
 
+	public LocalDateTime getCreateDateTime() {
+		return createDateTime;
+	}
+
+	public void setCreateDateTime(LocalDateTime createDateTime) {
+		this.createDateTime = createDateTime;
+	}
+
+	public LocalDateTime getUpdateDateTime() {
+		return updateDateTime;
+	}
+
+	public void setUpdateDateTime(LocalDateTime updateDateTime) {
+		this.updateDateTime = updateDateTime;
+	}
+
+	public List<Lecture> getLecturenames() {
+		return lecturenames;
+	}
+
+	public void setLecturenames(List<Lecture> lecturenames) {
+		this.lecturenames = lecturenames;
+	}
+
+	public List<Coupon> getHavingCoupon() {
+		return havingCoupon;
+	}
+
+	public void setHavingCoupon(List<Coupon> havingCoupon) {
+		this.havingCoupon = havingCoupon;
+	}
+
+	
 }

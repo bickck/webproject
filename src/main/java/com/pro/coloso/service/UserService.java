@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.pro.coloso.domain.Coupon;
 import com.pro.coloso.domain.User;
 import com.pro.coloso.dto.RequestLoginDTO;
 
@@ -16,5 +17,7 @@ public interface UserService {
 	public User update(User user);
 	
 	public Optional<User> findUserPassword(String email);
+	
+	public Coupon getCouponForUser(User user);
 
 }

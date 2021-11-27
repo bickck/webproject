@@ -23,7 +23,8 @@
 	<div class="container">
 		<div class="container center">
 
-			<form action="/auth/login" method="POST">
+			<form action="/auth/login" method="POST"
+				enctype="application/json">
 				<div class="form-group">
 					<div class="container-empty" id="emailEmpty"></div>
 					<input type="text" class="form-control" id="email"

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pro.coloso.domain.User;
 import com.pro.coloso.dto.RequestLoginDTO;
-import com.pro.coloso.dto.UserDTO;
+import com.pro.coloso.dto.RequestUserDTO;
 import com.pro.coloso.service.RequestAccountService;
 
 @Controller
@@ -49,7 +49,7 @@ public class MainController {
 		
 		User user = requestAccountService.requestLoginDTO(dto);
 		ModelAndView andView = new ModelAndView("/home");
-		andView.addObject("userdto", new UserDTO(user.getId(), user.getUsername()));
+		andView.addObject("userdto", new RequestUserDTO(user.getId(), user.getUsername()));
 		
 		return andView;
 	}

@@ -16,5 +16,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	@Query(value = "SELETE * FROM user WHERE EMAIL = ?")
 	Optional<User> findByEmail(String email);
-	
+
 }

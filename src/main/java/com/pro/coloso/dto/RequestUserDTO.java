@@ -2,20 +2,20 @@ package com.pro.coloso.dto;
 
 import javax.servlet.http.HttpSession;
 
-public class UserDTO {
+public class RequestUserDTO {
 
 	private Long id;
 	private String username;
+	private String email;
 
-	public UserDTO() {
+	public RequestUserDTO() {
 		super();
 	}
 
-	public UserDTO(Long id, String username) {
+	public RequestUserDTO(Long id, String username) {
 		super();
 		this.id = id;
 		this.username = username;
-
 	}
 
 	public Long getId() {
@@ -32,6 +32,14 @@ public class UserDTO {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

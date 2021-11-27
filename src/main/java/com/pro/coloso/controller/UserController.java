@@ -31,7 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pro.coloso.domain.User;
 import com.pro.coloso.dto.RequestLoginDTO;
 import com.pro.coloso.dto.ResponseEntity;
-import com.pro.coloso.dto.UserDTO;
+import com.pro.coloso.dto.RequestUserDTO;
 import com.pro.coloso.service.RequestAccountService;
 import com.pro.coloso.service.UserService;
 
@@ -57,7 +57,7 @@ public class UserController {
 	}
 
 	@PostMapping(value = "/user/delete")
-	public void deleteUser(@RequestBody UserDTO user) {
+	public void deleteUser(@RequestBody RequestUserDTO user) {
 		logger.info("call user delete username" + user.getUsername());
 	}
 

@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pro.coloso.domain.User;
+import com.pro.coloso.dto.RequestUserDTO;
 import com.pro.coloso.service.UserService;
 
 @RestController
@@ -29,11 +31,21 @@ public class UserDataController {
 		
 		Optional<User> user = userservice.findUserPassword(email);
 		
-		if(user != null) {
+		if(user == null) {
 			logger.info("user not found : " + email);
 			throw new IllegalAccessException("user not found : " + email);
 		}
 		
-		return user;
+		return user.get();
+	}
+	
+	@PostMapping(value ="/userinfo")
+	public User userinfo() {
+		
+		return null;
+	}
+	@RequestMapping(method = RequestMethod.POST, name ="/classroom")
+	public String userClassroom(@RequestBody RequestUserDTO userDTO) {
+		return null;
 	}
 }

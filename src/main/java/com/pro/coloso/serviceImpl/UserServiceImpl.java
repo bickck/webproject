@@ -17,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pro.coloso.controller.UserController;
+import com.pro.coloso.domain.Coupon;
 import com.pro.coloso.domain.User;
 import com.pro.coloso.dto.RequestLoginDTO;
 import com.pro.coloso.enumtype.UserType;
@@ -34,11 +35,18 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private RemoveBackUpRepository backUpRepository;
+	
+	@Override
+	public Coupon getCouponForUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Transactional
 	public User save(User user) {
 		user.setUserType(UserType.STUDENT);
 		return userRepository.saveAndFlush(user);
+		
 	}
 
 	@Override
