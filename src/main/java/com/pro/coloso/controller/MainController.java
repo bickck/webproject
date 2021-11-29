@@ -21,39 +21,10 @@ import com.pro.coloso.service.RequestAccountService;
 @Controller
 public class MainController {
 
-	@Autowired
-	private RequestAccountService requestAccountService;
-
 	@GetMapping({ "/", "" })
 	public String home() {
 		return "home";
 	}
-
-	@GetMapping("/user/login")
-	public String loginPage() {
-		return "user/loginForm";
-	}
-
-	@GetMapping("/account/register")
-	public String registerPage() {
-		return "user/register";
-	}
-
-	@GetMapping("/account/findme")
-	public String findPwd() {
-		return "findPwd";
-	}
-
-	@PostMapping(value = "/auth/login", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ModelAndView login(@RequestBody RequestLoginDTO dto, HttpSession httpSession) {
-		
-		User user = requestAccountService.requestLoginDTO(dto);
-		ModelAndView andView = new ModelAndView("/home");
-		andView.addObject("userdto", new RequestUserDTO(user.getId(), user.getUsername()));
-		
-		return andView;
-	}
-
 }
 
 /*

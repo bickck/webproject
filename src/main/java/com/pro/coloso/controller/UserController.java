@@ -36,7 +36,7 @@ import com.pro.coloso.service.RequestAccountService;
 import com.pro.coloso.service.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/me")
 public class UserController {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -56,7 +56,7 @@ public class UserController {
 		return null;
 	}
 
-	@PostMapping(value = "/user/delete")
+	@PostMapping(value = "/delete")
 	public void deleteUser(@RequestBody RequestUserDTO user) {
 		logger.info("call user delete username" + user.getUsername());
 	}
