@@ -7,10 +7,7 @@ public class ResponseEntity<T> {
 	HttpStatus httpStatus;
 	T value;
 	
-	public ResponseEntity(){
-		
-	}
-	
+
 	public ResponseEntity(HttpStatus httpStatus, T value) {
 		super();
 		this.httpStatus = httpStatus;

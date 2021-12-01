@@ -20,6 +20,7 @@ import com.pro.coloso.controller.UserController;
 import com.pro.coloso.domain.Coupon;
 import com.pro.coloso.domain.User;
 import com.pro.coloso.dto.RequestLoginDTO;
+import com.pro.coloso.dto.RequestUserEntity;
 import com.pro.coloso.enumtype.UserType;
 import com.pro.coloso.repository.RemoveBackUpRepository;
 import com.pro.coloso.repository.UserRepository;
@@ -43,7 +44,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Transactional
-	public User save(User user) {
+	public User save(RequestUserEntity userEntity) {
+		User user = new User(userEntity.getUsername(),userEntity.getEmail(),userEntity.getPhonenumber(),userEntity.getPassword());
 		user.setUserType(UserType.STUDENT);
 		return userRepository.saveAndFlush(user);
 		
@@ -66,9 +68,10 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public Optional<User> findUserPassword(String email) {
+	public String findUserPassword(String email) {
 		// TODO Auto-generated method stub
 		logger.info("get user email : "+ userRepository.findByEmail(email));
+		
 		return userRepository.findByEmail(email);
 	}
 

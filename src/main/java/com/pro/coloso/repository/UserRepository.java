@@ -15,6 +15,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	Optional<User> findByEmailAndPassword(String email, String password);
 
 	@Query(value = "SELETE * FROM user WHERE EMAIL = ?")
-	Optional<User> findByEmail(String email);
+	String findByEmail(String email);
 
 }

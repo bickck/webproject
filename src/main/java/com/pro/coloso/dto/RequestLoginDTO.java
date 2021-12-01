@@ -14,8 +14,7 @@ public class RequestLoginDTO {
 	public RequestLoginDTO(String email, String password) {
 		super();
 		this.email = email;
-		this.password = password;
-		
+		this.password = password;	
 	}
 
 	public String getEmail() {

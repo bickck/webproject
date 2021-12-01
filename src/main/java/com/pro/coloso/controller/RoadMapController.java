@@ -2,8 +2,10 @@ package com.pro.coloso.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller(value ="/roadmap")
+@Controller
+@RequestMapping(value ="/roadmap")
 public class RoadMapController {
 	
 	@GetMapping(value = "/roadmap_hair")

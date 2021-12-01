@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pro.coloso.domain.User;
 import com.pro.coloso.dto.RequestLoginDTO;
-import com.pro.coloso.dto.RequestUserDTO;
+import com.pro.coloso.dto.UserEntity;
 import com.pro.coloso.service.RequestAccountService;
 
 @Controller
