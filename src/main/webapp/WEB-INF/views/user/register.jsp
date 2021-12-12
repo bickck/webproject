@@ -20,7 +20,6 @@
 <body>
 	<div class="container">
 		<div class="container center">
-
 			<form>
 				<div class="form-group">
 					<div class="container-empty" id="usereEmpty"></div>

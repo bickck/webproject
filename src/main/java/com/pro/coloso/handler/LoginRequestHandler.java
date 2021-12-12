@@ -12,7 +12,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.springframework.web.servlet.handler.SimpleServletHandlerAdapter;
 import org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter;
 
-@Component("/auth/login")
+//@Component("/auth/login")
 public class LoginRequestHandler implements HandlerInterceptor {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginRequestHandler.class);

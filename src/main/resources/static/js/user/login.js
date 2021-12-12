@@ -5,15 +5,17 @@
 			},
  */
 
-$(document).ready(function(){
-	$('#password').on("click",()=>{
-		var data = $('password').val();
-		
+$(document).ready(function() {
+
+	$('#btn-login').on("click", () => {
+		var data = {
+			email: $("email").val(),
+			password: $("password").val()
+		}
 		$.ajax({
-			type:"GET",
-			url:"/check/pwd",
-			data:JSON.stringify(data),
-			contentType:"application/json; charset=utf-8"
+			type: "POST",
+			url: "/account/login",
+			data: data,
 		});
 	});
 });

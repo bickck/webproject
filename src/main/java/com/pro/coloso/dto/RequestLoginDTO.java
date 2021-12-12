@@ -7,14 +7,14 @@ public class RequestLoginDTO {
 	private String email;
 	private String password;
 
-	public RequestLoginDTO() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public RequestLoginDTO(String email, String password) {
 		super();
 		this.email = email;
-		this.password = password;	
+		this.password = password;
+	}
+
+	public RequestLoginDTO() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getEmail() {
@@ -31,6 +31,11 @@ public class RequestLoginDTO {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String toString() {
+		return "RequestLoginDTO [email=" + email + ", password=" + password + "]";
 	}
 
 }

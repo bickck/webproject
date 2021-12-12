@@ -20,5 +20,7 @@ public interface UserService {
 	public String findUserPassword(String email);
 	
 	public Coupon getCouponForUser(User user);
+	
+	public String duplicationEmail(String email);
 
 }

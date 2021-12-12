@@ -13,7 +13,7 @@ $(document).ready(function() {
 		
 		$.ajax({
 			type: "POST",
-			url: "/user/register",
+			url: "/account/register",
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8"
 		}).done(function(resp){

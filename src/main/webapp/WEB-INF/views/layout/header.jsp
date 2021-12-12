@@ -39,11 +39,11 @@
 
 			<c:choose>
 				<c:when test="${empty sessionScope.principal }">
-					<li class="nav-item"><a class="nav-link" href="/user/login">로그인</a>
-					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="/account/sign-in">로그인</a></li>
 
 					<li class="nav-item"><a class="nav-link"
-						href="account/register">회원가입</a></li>
+						href="account/sign-up">회원가입</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="nav-item"><a class="nav-link" href="/userList">나의
@@ -55,6 +55,3 @@
 
 		</ul>
 	</nav>
-	<h1>${id }</h1>
-	<h1>${username }</h1>
-	<h1>${email }</h1>

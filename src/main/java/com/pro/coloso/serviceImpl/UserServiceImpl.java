@@ -57,7 +57,6 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		backUpRepository.save(user);
 		userRepository.delete(user);
-
 	}
 
 	@Override
@@ -72,6 +71,12 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		logger.info("get user email : "+ userRepository.findByEmail(email));
 		
+		return userRepository.findByEmail(email);
+	}
+
+	@Override
+	public String duplicationEmail(String email) {
+		// TODO Auto-generated method stub
 		return userRepository.findByEmail(email);
 	}
 

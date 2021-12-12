@@ -1,17 +1,20 @@
 package com.pro.coloso.controller;
 
-import java.util.Optional;
+import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +49,11 @@ public class AccountController {
 		return "/user/loginForm";
 	}
 
+	@PostMapping("/logout")
+	public String logout() {
+		return "success";
+	}
+
 	@GetMapping("/sign-up")
 	public String registerPage() {
 		return "user/register";
@@ -56,20 +64,49 @@ public class AccountController {
 		return "user/findPwd";
 	}
 
-	@PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ModelAndView login(@RequestBody RequestLoginDTO dto, HttpSession httpSession) {
+	@ResponseBody
+	@GetMapping(value = "/test")
+	public String test(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
 
-		User user = requestAccountService.requestLoginDTO(dto);
+		HttpSession httpSession = httpServletRequest.getSession();
+		String data = httpServletRequest.getParameter("testvalue");
+		System.out.println(data);
+
+		if (httpSession != null) {
+			httpServletResponse.addCookie(new Cookie("cookiesTest", "value"));
+		}
+
+		return data;
+	}
+
+	@ResponseBody
+	@GetMapping(value = "/cookies")
+	public ModelAndView cookies(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+
+		ModelAndView view = new ModelAndView("/test");
+		view.addObject("donghyeon", "kim");
+		view.addObject("testView", "viewer");
+		return view;
+	}
+
+	@PostMapping("/login")
+	public ModelAndView login(@ModelAttribute RequestLoginDTO loginDTO) {
+
 		ModelAndView andView = new ModelAndView("/home");
-		andView.addObject("userdto", new UserEntity(user.getId(), user.getUsername(), user.getEmail(),
-				user.getPassword(), user.getPassword()));
+		if (loginDTO != null) {
+			User user = requestAccountService.requestLoginDTO(loginDTO);
+			andView.addObject("userdto", new UserEntity(user.getId(), user.getUsername(), user.getEmail(),
+					user.getPassword(), user.getPassword()));
+		} else {
+			throw new IllegalArgumentException();
+		}
 
 		return andView;
 	}
 
 	@ResponseBody
 	@PostMapping(value = "/register")
-	public ResponseEntity<String> save(@RequestBody RequestUserEntity userEntity) {
+	public ResponseEntity<String> register(@RequestBody RequestUserEntity userEntity) {
 		logger.info("call user save useremail: " + userEntity.getEmail());
 		// 저장을 하는데 아이디 중복이 있으면 안됌
 		userService.save(userEntity);
@@ -84,11 +121,16 @@ public class AccountController {
 		String userPassowrd = userService.findUserPassword(email);
 
 		if (userPassowrd == null) {
-			logger.info("email not found : " + email);	
+			logger.info("email not found : " + email);
 			throw new IllegalAccessException("emil not found : " + email);
 		}
-
 		return new ResponseEntity<ResponsePassword>(HttpStatus.OK, new ResponsePassword(userPassowrd));
 	}
-
 }
+/*
+ * if (httpSession != null) { httpSession.removeAttribute("user"); }
+ * httpSession.setAttribute("user", user); Cookie loginCookie = new
+ * Cookie("loginCookie", httpSession.getId()); loginCookie.setPath("/");
+ * loginCookie.setMaxAge(7 * 24 * 60 * 60);
+ * httpServletResponse.addCookie(loginCookie);
+ */
