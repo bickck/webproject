@@ -65,12 +65,12 @@ public class AccountController {
 	}
 
 	@ResponseBody
-	@GetMapping(value = "/test")
+	@PostMapping(value = "/test")
 	public String test(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
 
 		HttpSession httpSession = httpServletRequest.getSession();
 		String data = httpServletRequest.getParameter("testvalue");
-		System.out.println(data);
+		//data = "g2";
 
 		if (httpSession != null) {
 			httpServletResponse.addCookie(new Cookie("cookiesTest", "value"));

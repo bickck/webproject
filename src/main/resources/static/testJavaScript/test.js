@@ -7,8 +7,8 @@ $(document).ready(function() {
 	$('#button').click(function() {
 		var testvalue = $("#test").val();
 		var result = data(testvalue);
-
-		console.log("result" + result);
+		const dv = document.getElementById("val");
+		dv.textContent = result;
 	})
 })
 
@@ -17,7 +17,7 @@ function data(data) {
 	var result_data;
 
 	$.ajax({
-		type: "GET",
+		type: "POST",
 		url: "/account/test",
 		data: { testvalue: data },
 		async: false,
@@ -27,7 +27,5 @@ function data(data) {
 		}
 
 	});
-
-	console.log("ajax data:" + result_data);
 	return result_data;
 }
