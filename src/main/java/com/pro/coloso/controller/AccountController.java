@@ -70,7 +70,6 @@ public class AccountController {
 
 		HttpSession httpSession = httpServletRequest.getSession();
 		String data = httpServletRequest.getParameter("testvalue");
-		//data = "g2";
 
 		if (httpSession != null) {
 			httpServletResponse.addCookie(new Cookie("cookiesTest", "value"));
@@ -88,6 +87,10 @@ public class AccountController {
 		view.addObject("testView", "viewer");
 		return view;
 	}
+	
+	/**
+	 * 로그인시 쿠폰 정보 갱신 
+	 * */	
 
 	@PostMapping("/login")
 	public ModelAndView login(@ModelAttribute RequestLoginDTO loginDTO) {

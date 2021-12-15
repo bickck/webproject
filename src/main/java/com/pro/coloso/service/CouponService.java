@@ -1,6 +1,8 @@
 package com.pro.coloso.service;
 
+import com.pro.coloso.domain.Coupon;
+
 public interface CouponService {
 
-	public void CreateCoupon();
+	public Coupon createCoupon(Coupon coupon);
 }

@@ -15,23 +15,27 @@ public class Coupon {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(name = "USER_EMAIL")
-	private String username;
 
-	@Column(name = "COUPON_NAME")
-	private String coupon_name;
+	@Column(name = "COUPON_EVENT_NAME")
+	private String couponEventName;
 
-	@Column(name = "DISCOUNT")
-	private int discount;
-	
+	@Column(name = "DISCOUNTRATE")
+	private int discountRate;
+
 	@Embedded
-	@Column(name ="DUE_DATE")
-	private DueDate dueDate;
+	@Column(name = "PERIOD")
+	private CouponPeriod period;
 	
-	@Column(name="USED")
-	private boolean used;
-	
+	public Coupon() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Coupon(String couponEventName, int discountRate, CouponPeriod period) {
+		super();
+		this.couponEventName = couponEventName;
+		this.discountRate = discountRate;
+		this.period = period;
+	}
 
 	public Long getId() {
 		return id;
@@ -41,29 +45,28 @@ public class Coupon {
 		this.id = id;
 	}
 
-	public String getCoupon_name() {
-		return coupon_name;
+	public String getCouponEventName() {
+		return couponEventName;
 	}
 
-	public void setCoupon_name(String coupon_name) {
-		this.coupon_name = coupon_name;
+	public void setCouponEventName(String couponEventName) {
+		this.couponEventName = couponEventName;
 	}
 
-	public int getDiscount() {
-		return discount;
+	public CouponPeriod getDueDate() {
+		return period;
 	}
 
-	public void setDiscount(int discount) {
-		this.discount = discount;
+	public void setDueDate(CouponPeriod dueDate) {
+		this.period = dueDate;
 	}
 
-	public boolean isUsed() {
-		return used;
+	public int getDiscountRate() {
+		return discountRate;
 	}
 
-	public void setUsed(boolean used) {
-		this.used = used;
+	public void setDiscountRate(int discountRate) {
+		this.discountRate = discountRate;
 	}
 
-	
 }

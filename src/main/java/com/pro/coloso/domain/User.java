@@ -68,8 +68,8 @@ public class User {
 	@OneToMany(mappedBy = "lecturename")
 	private List<Lecture> lecturenames = new ArrayList<Lecture>();
 
-	@OneToMany(mappedBy = "coupon_name")
-	private List<Coupon> havingCoupon = new ArrayList<Coupon>();
+	//@OneToMany(mappedBy = "coupon_name")
+	//private List<Coupon> havingCoupon = new ArrayList<Coupon>();
 
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -161,13 +161,13 @@ public class User {
 		this.lecturenames = lecturenames;
 	}
 
-	public List<Coupon> getHavingCoupon() {
-		return havingCoupon;
-	}
+	//public List<Coupon> getHavingCoupon() {
+	//	return havingCoupon;
+	//}
 
-	public void setHavingCoupon(List<Coupon> havingCoupon) {
-		this.havingCoupon = havingCoupon;
-	}
+	//public void setHavingCoupon(List<Coupon> havingCoupon) {
+	//	this.havingCoupon = havingCoupon;
+	//}
 
 	
 }
