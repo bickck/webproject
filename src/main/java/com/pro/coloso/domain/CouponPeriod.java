@@ -9,7 +9,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Embeddable
-public class CouponPeriod {
+public class CouponPeriod  {
 
 	@Temporal(TemporalType.DATE)
 	private Calendar startDate;

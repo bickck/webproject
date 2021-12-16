@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.pro.coloso.domain.User;
-import com.pro.coloso.dto.RequestLoginDTO;
+import com.pro.coloso.dto.RequestLoginEntity;
 import com.pro.coloso.repository.UserRepository;
 import com.pro.coloso.service.RequestAccountService;
 
@@ -18,7 +18,7 @@ public class RequestAccountServiceImpl implements RequestAccountService {
 	private UserRepository userRepository;
 
 	@Override
-	public User requestLoginDTO(RequestLoginDTO requestLoginDTO) {
+	public User requestLogin(RequestLoginEntity requestLoginDTO) {
 		// TODO Auto-generated method stub
 		Optional<User> dto = Optional.ofNullable(userRepository
 				.findByEmailAndPassword(requestLoginDTO.getEmail(), requestLoginDTO.getPassword()).orElseThrow(()->{

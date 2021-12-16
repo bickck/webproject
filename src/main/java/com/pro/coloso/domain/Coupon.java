@@ -6,35 +6,36 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 import org.hibernate.annotations.Generated;
 
 @Entity(name = "coupon")
-public class Coupon {
+public class Coupon extends CouponBaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "COUPON_EVENT_NAME")
-	private String couponEventName;
+	@Column(name = "ISUSED")
+	private boolean isUsed;
 
-	@Column(name = "DISCOUNTRATE")
-	private int discountRate;
+	@Override
+	public void setEventname(String eventname) {
+		// TODO Auto-generated method stub
+		super.setEventname(eventname);
+	}
 
-	@Embedded
-	@Column(name = "PERIOD")
-	private CouponPeriod period;
-	
 	public Coupon() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Coupon(String couponEventName, int discountRate, CouponPeriod period) {
 		super();
-		this.couponEventName = couponEventName;
-		this.discountRate = discountRate;
-		this.period = period;
+		super.setEventname(couponEventName);
+		super.setDiscountrate(discountRate);
+		super.setPeriod(period);
 	}
 
 	public Long getId() {
@@ -43,30 +44,6 @@ public class Coupon {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getCouponEventName() {
-		return couponEventName;
-	}
-
-	public void setCouponEventName(String couponEventName) {
-		this.couponEventName = couponEventName;
-	}
-
-	public CouponPeriod getDueDate() {
-		return period;
-	}
-
-	public void setDueDate(CouponPeriod dueDate) {
-		this.period = dueDate;
-	}
-
-	public int getDiscountRate() {
-		return discountRate;
-	}
-
-	public void setDiscountRate(int discountRate) {
-		this.discountRate = discountRate;
 	}
 
 }

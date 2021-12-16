@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pro.coloso.domain.User;
-import com.pro.coloso.dto.RequestLoginDTO;
+import com.pro.coloso.dto.RequestLoginEntity;
 import com.pro.coloso.dto.RequestUserEntity;
 import com.pro.coloso.dto.UserEntity;
 import com.pro.coloso.dto.ResponseEntity;
@@ -93,11 +93,11 @@ public class AccountController {
 	 * */	
 
 	@PostMapping("/login")
-	public ModelAndView login(@ModelAttribute RequestLoginDTO loginDTO) {
+	public ModelAndView login(@ModelAttribute RequestLoginEntity loginDTO) {
 
 		ModelAndView andView = new ModelAndView("/home");
 		if (loginDTO != null) {
-			User user = requestAccountService.requestLoginDTO(loginDTO);
+			User user = requestAccountService.requestLogin(loginDTO);
 			andView.addObject("userdto", new UserEntity(user.getId(), user.getUsername(), user.getEmail(),
 					user.getPassword(), user.getPassword()));
 		} else {

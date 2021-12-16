@@ -9,7 +9,7 @@ import com.pro.coloso.domain.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	//
+	
 	User findByUsername(String username);
 
 	Optional<User> findByEmailAndPassword(String email, String password);
@@ -17,4 +17,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Query(value = "SELETE * FROM user WHERE EMAIL = ?")
 	String findByEmail(String email);
 
+	
 }

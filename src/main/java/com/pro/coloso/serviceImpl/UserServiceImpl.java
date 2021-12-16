@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import com.pro.coloso.controller.UserController;
 import com.pro.coloso.domain.Coupon;
 import com.pro.coloso.domain.User;
-import com.pro.coloso.dto.RequestLoginDTO;
+import com.pro.coloso.dto.RequestLoginEntity;
 import com.pro.coloso.dto.RequestUserEntity;
 import com.pro.coloso.enumtype.UserType;
 import com.pro.coloso.repository.RemoveBackUpRepository;

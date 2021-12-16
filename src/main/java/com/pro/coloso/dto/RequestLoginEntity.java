@@ -2,18 +2,18 @@ package com.pro.coloso.dto;
 
 import org.springframework.http.HttpStatus;
 
-public class RequestLoginDTO {
+public class RequestLoginEntity {
 
 	private String email;
 	private String password;
 
-	public RequestLoginDTO(String email, String password) {
+	public RequestLoginEntity(String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
 	}
 
-	public RequestLoginDTO() {
+	public RequestLoginEntity() {
 		// TODO Auto-generated constructor stub
 	}
 

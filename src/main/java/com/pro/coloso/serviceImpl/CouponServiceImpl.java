@@ -1,5 +1,7 @@
 package com.pro.coloso.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,18 @@ public class CouponServiceImpl implements CouponService {
 	public Coupon createCoupon(Coupon coupon) {
 		// TODO Auto-generated method stub
 		return couponRepository.save(coupon);
+	}
+	
+	@Override
+	public Coupon getCoupon(Coupon coupon) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public List<Coupon> allCoupon() {
+		// TODO Auto-generated method stub
+		return couponRepository.findAll();
 	}
 	
 }

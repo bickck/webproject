@@ -31,7 +31,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pro.coloso.domain.User;
-import com.pro.coloso.dto.RequestLoginDTO;
+import com.pro.coloso.dto.RequestLoginEntity;
 import com.pro.coloso.dto.RequestUserEntity;
 import com.pro.coloso.dto.ResponseEntity;
 import com.pro.coloso.dto.UserEntity;

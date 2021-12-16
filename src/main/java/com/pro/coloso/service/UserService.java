@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.pro.coloso.domain.Coupon;
 import com.pro.coloso.domain.User;
-import com.pro.coloso.dto.RequestLoginDTO;
+import com.pro.coloso.dto.RequestLoginEntity;
 import com.pro.coloso.dto.RequestUserEntity;
 
 public interface UserService {
